@@ -59,7 +59,7 @@ export default class ApiResponse<T> {
       false,
       message,
       process.env.NODE_ENV === 'development' ? error : null,
-      statusCode,
+      statusCode
     );
   }
 

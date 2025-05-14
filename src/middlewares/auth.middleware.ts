@@ -1,8 +1,8 @@
 import jwt from 'jsonwebtoken';
 import createHttpError from 'http-errors';
-import {NextFunction, Request, Response} from 'express'
+import { NextFunction, Request, Response } from 'express';
 import UserModel from '../modules/user/user.model';
-
+import ApiResponse from '../utils/apiResponse.util';
 
 export const authMiddleware = async (req: Request, res: Response, next: NextFunction) => {
   const token = req.headers.authorization?.split(' ')[1];
@@ -15,6 +15,6 @@ export const authMiddleware = async (req: Request, res: Response, next: NextFunc
     req.user = user;
     next();
   } catch (err) {
-    next(createHttpError.Unauthorized('Invalid token'));
+    ApiResponse.unauthorized('Invalid token, Error: ' + err);
   }
 };

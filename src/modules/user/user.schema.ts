@@ -1,6 +1,5 @@
 import { z } from 'zod';
 
-
 export const createUserSchema = z.object({
   body: z.object({
     firstName: z.string().min(1),
