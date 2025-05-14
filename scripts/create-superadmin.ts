@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
-import RoleModel from '../src/modules/role/role.model'
+import RoleModel from '../src/modules/role/role.model';
 import UserModel from '../src/modules/user/user.model';
 import bcrypt from 'bcryptjs';
 

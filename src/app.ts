@@ -10,15 +10,17 @@ dotenv.config();
 
 const app = express();
 
-app.use(helmet({
+app.use(
+  helmet({
     contentSecurityPolicy: {
       directives: {
         defaultSrc: ["'self'"],
         scriptSrc: ["'self'", 'trusted.cdn.com'],
-      }
+      },
     },
-    crossOriginEmbedderPolicy: false // example: disable one header if it breaks something
-  }));
+    crossOriginEmbedderPolicy: false, // example: disable one header if it breaks something
+  })
+);
 app.use(cors());
 app.use(morgan('dev'));
 app.use(express.json());

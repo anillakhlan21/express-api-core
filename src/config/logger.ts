@@ -12,19 +12,15 @@ const logFormat = winston.format.printf(({ level, message, timestamp }) => {
 
 const logger = winston.createLogger({
   level: 'info',
-  format: winston.format.combine(
-    winston.format.timestamp(),
-    winston.format.colorize(),
-    logFormat
-  ),
+  format: winston.format.combine(winston.format.timestamp(), winston.format.colorize(), logFormat),
   transports: [
     new winston.transports.Console(),
     new winston.transports.File({ filename: path.join(logDir, 'error.log'), level: 'error' }),
-    new winston.transports.File({ filename: path.join(logDir, 'combined.log') })
+    new winston.transports.File({ filename: path.join(logDir, 'combined.log') }),
   ],
   exceptionHandlers: [
-    new winston.transports.File({ filename: path.join(logDir, 'exceptions.log') })
-  ]
+    new winston.transports.File({ filename: path.join(logDir, 'exceptions.log') }),
+  ],
 });
 
 export default logger;
