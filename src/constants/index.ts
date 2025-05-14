@@ -1,3 +1,7 @@
+import dotenv from 'dotenv';
+
+dotenv.config();
+
 export const HTTP_STATUS = {
   OK: 200,
   CREATED: 201,
@@ -10,4 +14,11 @@ export const HTTP_STATUS = {
 export const MESSAGES = {
   SERVER_ERROR: 'Something went wrong!',
   NOT_FOUND: 'Resource not found',
+};
+
+export const SUPER_ADMIN = {
+  NAME: 'initial developer',
+  ROLE: 'superAdmin',
+  EMAIL: process.env.ADMIN_EMAIL || 'admin@yourapp.com',
+  PASSWORD: process.env.ADMIN_PASSWORD || 'admin123',
 };

@@ -1,4 +1,5 @@
 import mongoose, { Document, Schema, Types } from 'mongoose';
+import { IRole } from '../role/role.model';
 
 // 1. Interface for type safety
 export interface IUser extends Document {
@@ -6,11 +7,12 @@ export interface IUser extends Document {
   lastName: string;
   email: string;
   password: string;
-  role: Types.ObjectId; // Ref to Role
+  roleId: Types.ObjectId; // Ref to Role
   createdAt: Date;
   updatedAt: Date;
   fullName: string; // virtual
   comparePassword(candidatePassword: string): Promise<boolean>;
+  role: IRole;
 }
 
 // 2. Define schema
@@ -39,7 +41,7 @@ const UserSchema = new Schema<IUser>(
       minlength: 6,
       select: false,
     },
-    role: {
+    roleId: {
       type: Schema.Types.ObjectId,
       ref: 'Role',
       required: [true, 'Role is required'],
@@ -61,9 +63,9 @@ UserSchema.virtual('fullName').get(function (this: IUser) {
 });
 
 // (Optional) If you frequently populate role name
-UserSchema.virtual('roleName', {
+UserSchema.virtual('role', {
   ref: 'Role',
-  localField: 'role',
+  localField: 'roleId',
   foreignField: '_id',
   justOne: true,
   options: { select: 'name' },

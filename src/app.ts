@@ -5,11 +5,20 @@ import cors from 'cors';
 import { errorMiddleware } from './middlewares/error.middleware';
 import routes from './routes';
 import { swaggerSpec, swaggerUi } from './config/swagger';
-
+import helmet from 'helmet';
 dotenv.config();
 
 const app = express();
 
+app.use(helmet({
+    contentSecurityPolicy: {
+      directives: {
+        defaultSrc: ["'self'"],
+        scriptSrc: ["'self'", 'trusted.cdn.com'],
+      }
+    },
+    crossOriginEmbedderPolicy: false // example: disable one header if it breaks something
+  }));
 app.use(cors());
 app.use(morgan('dev'));
 app.use(express.json());
