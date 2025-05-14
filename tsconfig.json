@@ -1,0 +1,20 @@
+{
+    "compilerOptions": {
+      "target": "ES2020",                         // Output language level
+      "module": "ESNext",                         // For native ES modules
+      "moduleResolution": "node",                // Resolve using Node.js module system
+      "lib": ["ES2020"],                         // Use latest ECMAScript features
+      "outDir": "dist",                          // Output compiled files here
+      "rootDir": "src",                          // Source files live here
+      "esModuleInterop": true,                   // Allow default imports from CommonJS
+      "forceConsistentCasingInFileNames": true,
+      "strict": true,                            // Enable all strict type-checking options
+      "skipLibCheck": true,
+      "resolveJsonModule": true,                 // Allow importing JSON files
+      "declaration": true,                       // Generate .d.ts files
+      "sourceMap": true,                          // Include source maps for debugging
+      "typeRoots": ["./src/types", "./node_modules/@types"]
+    },
+    "include": ["src"],
+    "exclude": ["node_modules", "dist"]
+  }
