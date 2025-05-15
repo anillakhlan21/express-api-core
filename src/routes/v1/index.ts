@@ -1,8 +1,8 @@
 import { Router } from 'express';
 
 // Import feature-specific routes
-import { authRoutes, roleRoutes, userRoutes } from '../../modules';
-import { authMiddleware } from '../../middlewares/auth.middleware';
+import { authRoutes, roleRoutes, userRoutes } from '../../modules/index.js';
+import { authMiddleware } from '../../middlewares/auth.middleware.js';
 
 const router = Router();
 

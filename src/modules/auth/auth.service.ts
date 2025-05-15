@@ -1,7 +1,6 @@
 import jwt from 'jsonwebtoken';
 import createHttpError from 'http-errors';
-import UserModel, { IUser } from '../user/user.model';
-
+import UserModel, { IUser } from '../user/user.model.js';
 const JWT_SECRET = process.env.JWT_SECRET!;
 
 export class AuthService {
@@ -18,7 +17,7 @@ export class AuthService {
     if (!user) throw createHttpError.Unauthorized('Invalid credentials');
 
     const isMatch = await user.comparePassword(password);
-    if (!isMatch) throw createHttpError.Unauthorized('Invalid credentials');
+    if (!isMatch) throw new Error('Invalid Password');
 
     const token = jwt.sign({ id: user._id }, JWT_SECRET, { expiresIn: '7d' });
 

@@ -1,5 +1,5 @@
 import mongoose, { Document, Schema, Types } from 'mongoose';
-import { IRole } from '../role/role.model';
+import { IRole } from '../role/role.model.js';
 
 // 1. Interface for type safety
 export interface IUser extends Document {
@@ -55,7 +55,7 @@ const UserSchema = new Schema<IUser>(
 );
 
 // 3. Index
-UserSchema.index({ email: 1 }, { unique: true });
+// UserSchema.index({ email: 1 }, { unique: true });
 
 // 4. Virtuals
 UserSchema.virtual('fullName').get(function (this: IUser) {
@@ -85,7 +85,8 @@ UserSchema.pre<IUser>('save', async function (next) {
 // 6. Instance method
 UserSchema.methods.comparePassword = async function (candidatePassword: string): Promise<boolean> {
   const bcrypt = await import('bcryptjs');
-  return bcrypt.compare(candidatePassword, this.password);
+  const isMatch = await bcrypt.compare(candidatePassword, this.password);
+  return isMatch;
 };
 
 // 7. Transform JSON output

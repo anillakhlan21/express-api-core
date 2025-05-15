@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
-import { UserService } from './user.service';
-import ApiResponse from '../../utils/apiResponse.util';
+import { UserService } from './user.service.js';
+import ApiResponse from '../../utils/apiResponse.util.js';
 
 export class UserController {
   static async getAllUsers(_req: Request, res: Response) {

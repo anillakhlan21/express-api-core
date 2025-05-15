@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
-import RoleModel from '../src/modules/role/role.model';
-import UserModel from '../src/modules/user/user.model';
+import RoleModel from '../dist/modules/role/role.model.js';
+import UserModel from '../dist/modules/user/user.model.js';
 import bcrypt from 'bcryptjs';
 
 dotenv.config();
@@ -15,13 +15,12 @@ const run = async () => {
     { upsert: true, new: true }
   );
 
-  const hashedPassword = await bcrypt.hash(process.env.ADMIN_PASSWORD || 'admin123', 10);
-
   await UserModel.create({
-    name: 'Initial Admin',
-    email: process.env.ADMIN_EMAIL || 'admin@yourapp.com',
-    password: hashedPassword,
-    role: role._id,
+    firstName: 'Initial',
+    lastName: 'admin',
+    email: process.env.ADMIN_EMAIL,
+    password: process.env.ADMIN_PASSWORD,
+    roleId: role._id,
   });
 
   console.log('Superadmin user created.');

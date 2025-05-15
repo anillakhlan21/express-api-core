@@ -1,4 +1,4 @@
-import RoleModel, { IRole } from './role.model';
+import RoleModel, { IRole } from './role.model.js';
 
 class RoleService {
   static async createRole(payload: Partial<IRole>) {

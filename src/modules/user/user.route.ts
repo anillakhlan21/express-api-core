@@ -1,8 +1,8 @@
 import { Router } from 'express';
-import validateRequest from '../../middlewares/validate.middleware';
-import { createUserSchema, updateUserSchema } from './user.schema';
-import { UserController } from './user.controller';
-import { checkPermission } from '../../middlewares/rbac.middleware';
+import validateRequest from '../../middlewares/validate.middleware.js';
+import { createUserSchema, updateUserSchema } from './user.schema.js';
+import { UserController } from './user.controller.js';
+import { checkPermission } from '../../middlewares/rbac.middleware.js';
 
 const router = Router();
 

@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
-import ApiResponse from '../../utils/apiResponse.util';
-import RoleService from './role.service';
+import ApiResponse from '../../utils/apiResponse.util.js';
+import RoleService from './role.service.js';
 
 class RoleController {
   static async createRole(req: Request, res: Response) {

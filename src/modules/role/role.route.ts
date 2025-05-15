@@ -1,7 +1,7 @@
 import express from 'express';
-import validateRequest from '../../middlewares/validate.middleware';
-import { createRoleSchema, updateRoleSchema } from './role.schema';
-import RoleController from './role.controller';
+import validateRequest from '../../middlewares/validate.middleware.js';
+import { createRoleSchema, updateRoleSchema } from './role.schema.js';
+import RoleController from './role.controller.js';
 
 const router = express.Router();
 

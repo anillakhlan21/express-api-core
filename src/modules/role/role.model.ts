@@ -37,7 +37,7 @@ const RoleSchema = new Schema<IRole>(
 );
 
 // 3. Index
-RoleSchema.index({ name: 1 }, { unique: true });
+// RoleSchema.index({ name: 1 }, { unique: true });
 
 // 4. Virtual
 RoleSchema.virtual('permissionCount').get(function (this: IRole) {

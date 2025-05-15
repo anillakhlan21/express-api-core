@@ -13,7 +13,7 @@
     "resolveJsonModule": true, // Allow importing JSON files
     "declaration": true, // Generate .d.ts files
     "sourceMap": true, // Include source maps for debugging
-    "typeRoots": ["./src/types", "./node_modules/@types"]
+    "typeRoots": ["./src/types", "./node_modules/@types"],
   },
   "include": ["src"],
   "exclude": ["node_modules", "dist"]

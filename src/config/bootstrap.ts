@@ -1,7 +1,7 @@
 import bcrypt from 'bcryptjs/umd/types';
-import RoleModel from '../modules/role/role.model';
-import UserModel from '../modules/user/user.model';
-import { SUPER_ADMIN } from '../constants';
+import RoleModel from '../modules/role/role.model.js';
+import UserModel from '../modules/user/user.model.js';
+import { SUPER_ADMIN } from '../constants/index.js';
 
 export const bootstrapRBAC = async () => {
   const existingSuperAdmin = await UserModel.findOne();

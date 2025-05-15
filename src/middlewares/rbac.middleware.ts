@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from 'express';
-import UserModel from '../modules/user/user.model';
-import ApiResponse from '../utils/apiResponse.util';
-import { IRole } from '../modules/role/role.model';
+import UserModel from '../modules/user/user.model.js';
+import ApiResponse from '../utils/apiResponse.util.js';
+import { IRole } from '../modules/role/role.model.js';
 
 export const checkPermission = (requiredPermission: string) => {
   return async (req: Request, res: Response, next: NextFunction) => {

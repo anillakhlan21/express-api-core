@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from 'express';
-import ApiResponse from '../utils/apiResponse.util';
-import { AppLogger } from '../utils/logger.util';
+import ApiResponse from '../utils/apiResponse.util.js';
+import { AppLogger } from '../utils/logger.util.js';
 
 const logger = new AppLogger('Error Middleware');
 

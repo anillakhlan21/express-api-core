@@ -2,9 +2,9 @@ import express from 'express';
 import morgan from 'morgan';
 import dotenv from 'dotenv';
 import cors from 'cors';
-import { errorMiddleware } from './middlewares/error.middleware';
-import routes from './routes';
-import { swaggerSpec, swaggerUi } from './config/swagger';
+import { errorMiddleware } from './middlewares/error.middleware.js';
+import routes from './routes/index.js';
+import { swaggerSpec, swaggerUi } from './config/swagger.js';
 import helmet from 'helmet';
 dotenv.config();
 
