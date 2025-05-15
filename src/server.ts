@@ -19,5 +19,5 @@ mongoose
     process.exit(1);
   });
 
-  process.on('uncaughtException', console.error);
+process.on('uncaughtException', console.error);
 process.on('unhandledRejection', console.error);
