@@ -33,6 +33,6 @@ router.post('/register', validateMiddleware(createUserSchema), AuthController.re
  *         description: Invalid credentials
  */
 router.post('/login', validateMiddleware(loginSchema), AuthController.login);
-router.get('/me', authMiddleware,  AuthController.getProfile);
+router.get('/me', authMiddleware, AuthController.getProfile);
 
 export default router;

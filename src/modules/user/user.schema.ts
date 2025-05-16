@@ -5,7 +5,7 @@ export const createUserSchema = z.object({
     firstName: z.string().min(1),
     lastName: z.string().min(1),
     email: z.string().email(),
-    password: z.string({ message: 'Password length must be greater than 5.'}).min(6),
+    password: z.string({ message: 'Password length must be greater than 5.' }).min(6),
     roleId: z.string().length(24),
   }),
 });

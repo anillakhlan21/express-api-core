@@ -83,7 +83,7 @@ UserSchema.pre<IUser>('save', async function (next) {
 });
 
 UserSchema.pre<IUser>('find', async function (next) {
-  this.populate('role')
+  this.populate('role');
   next();
 });
 
