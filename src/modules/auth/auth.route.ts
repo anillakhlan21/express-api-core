@@ -1,11 +1,13 @@
 import express from 'express';
-import { loginSchema, registerSchema } from './auth.schema.js';
+import { loginSchema } from './auth.schema.js';
 import validateMiddleware from '../../middlewares/validate.middleware.js';
 import { AuthController } from './auth.controller.js';
+import { createUserSchema } from '../user/user.schema.js';
+import { authMiddleware } from '../../middlewares/auth.middleware.js';
 
 const router = express.Router();
 
-router.post('/register', validateMiddleware(registerSchema), AuthController.register);
+router.post('/register', validateMiddleware(createUserSchema), AuthController.register);
 
 /**
  * @swagger
@@ -31,6 +33,6 @@ router.post('/register', validateMiddleware(registerSchema), AuthController.regi
  *         description: Invalid credentials
  */
 router.post('/login', validateMiddleware(loginSchema), AuthController.login);
-router.get('/me', AuthController.getProfile);
+router.get('/me', authMiddleware,  AuthController.getProfile);
 
 export default router;

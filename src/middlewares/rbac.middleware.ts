@@ -11,7 +11,7 @@ export const checkPermission = (requiredPermission: string) => {
       return ApiResponse.unauthorized().send(res);
     }
 
-    const user = await UserModel.findById(userId);
+    const user = await UserModel.findById(userId).populate('role');
 
     if (!user || !user.role) {
       return ApiResponse.forbidden('Access denied').send(res);

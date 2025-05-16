@@ -7,7 +7,7 @@
   "scripts": {
     "start": "node dist/server.js",
     "build": "tsc",
-    "dev": "tsc && nodemon dist/server.js",
+    "dev": "tsc --watch & nodemon dist/server.js",
     "format:fix": "prettier --write .",
     "clean": "rm -rf dist",
     "prepare": "husky install",

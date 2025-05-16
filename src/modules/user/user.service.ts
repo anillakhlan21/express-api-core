@@ -3,7 +3,7 @@ import mongoose from 'mongoose';
 
 export class UserService {
   static async getAllUsers(): Promise<IUser[]> {
-    return UserModel.find().populate('role');
+    return UserModel.find();
   }
 
   static async getUserById(id: string): Promise<IUser | null> {

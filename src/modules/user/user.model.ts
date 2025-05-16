@@ -68,7 +68,7 @@ UserSchema.virtual('role', {
   localField: 'roleId',
   foreignField: '_id',
   justOne: true,
-  options: { select: 'name' },
+  // options: { select: 'name' },
 });
 
 // 5. Pre-save middleware (hash password)
@@ -79,6 +79,11 @@ UserSchema.pre<IUser>('save', async function (next) {
   const salt = await bcrypt.genSalt(10);
   this.password = await bcrypt.hash(this.password, salt);
 
+  next();
+});
+
+UserSchema.pre<IUser>('find', async function (next) {
+  this.populate('role')
   next();
 });
 

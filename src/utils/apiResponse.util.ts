@@ -50,7 +50,7 @@ export default class ApiResponse<T> {
     return new ApiResponse<any>(false, message, data ?? null, 422);
   }
 
-  static internal(message = 'Internal Server Error', data?: any): ApiResponse<any> {
+  static internal(message: any = 'Internal Server Error', data?: any): ApiResponse<any> {
     return new ApiResponse<any>(false, message, data ?? null, 500);
   }
 

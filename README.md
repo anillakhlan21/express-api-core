@@ -45,3 +45,6 @@ Would you like me to:
 	•	Add tests for the logger?
 	•	Add correlation ID middleware?
 
+
+# common password for all user
+"password": "123456",

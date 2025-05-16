@@ -3,21 +3,29 @@ import { AuthService } from './auth.service.js';
 import ApiResponse from '../../utils/apiResponse.util.js';
 
 export class AuthController {
-  static async register(req: Request, _res: Response, next: NextFunction) {
+  static async register(req: Request, res: Response, next: NextFunction) {
     try {
       const user = await AuthService.register(req.body);
-      return ApiResponse.created(user, 'User registered successfully');
+      return ApiResponse.created(user, 'User registered successfully').send(res);
+    } catch (error) {
+      return ApiResponse.internal(error).send(res);
+    }
+  }
+
+  static async login(req: Request, res: Response, next: NextFunction) {
+    try {
+      const tokenData = await AuthService.login(req.body);
+      return ApiResponse.ok(tokenData, 'Login successful').send(res);
     } catch (error) {
       next(error);
     }
   }
 
-  static async login(req: Request, res: Response, _next: NextFunction) {
-    const tokenData = await AuthService.login(req.body);
-    return ApiResponse.ok(tokenData, 'Login successful').send(res);
-  }
-
-  static async getProfile(req: Request, _res: Response) {
-    return ApiResponse.ok(req.user, 'User profile fetched');
+  static async getProfile(req: Request, res: Response) {
+    try {
+      return ApiResponse.ok(req.user, 'User profile fetched').send(res);
+    } catch (error) {
+      return ApiResponse.internal(error).send(res);
+    }
   }
 }
