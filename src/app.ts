@@ -6,7 +6,6 @@ import { errorMiddleware } from './middlewares/error.middleware.js';
 import routes from './routes/index.js';
 import { swaggerSpec, swaggerUi } from './config/swagger.js';
 import helmet from 'helmet';
-import { authMiddleware } from './middlewares/auth.middleware.js';
 dotenv.config();
 
 const app = express();

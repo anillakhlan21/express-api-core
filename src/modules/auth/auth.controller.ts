@@ -8,7 +8,7 @@ export class AuthController {
       const user = await AuthService.register(req.body);
       return ApiResponse.created(user, 'User registered successfully').send(res);
     } catch (error) {
-      return ApiResponse.internal(error).send(res);
+      next(error);
     }
   }
 
@@ -21,11 +21,11 @@ export class AuthController {
     }
   }
 
-  static async getProfile(req: Request, res: Response) {
+  static async getProfile(req: Request, res: Response, next: NextFunction) {
     try {
       return ApiResponse.ok(req.user, 'User profile fetched').send(res);
     } catch (error) {
-      return ApiResponse.internal(error).send(res);
+      next(error);
     }
   }
 }

@@ -1,20 +1,14 @@
-import { Router } from 'express';
 import validateRequest from '../../middlewares/validate.middleware.js';
-import { createUserSchema, updateUserSchema } from './user.schema.js';
+import { createBaseRoutes, MiddlewareMap } from '../common/base.route.js';
 import { UserController } from './user.controller.js';
 import { checkPermission } from '../../middlewares/rbac.middleware.js';
+import { createUserSchema, updateUserSchema } from './user.schema.js';
 
-const router = Router();
+const middlewares: MiddlewareMap = {
+  create: [checkPermission('user:create'), validateRequest(createUserSchema)],
+  updateById: [validateRequest(updateUserSchema)],
+};
 
-router.get('/', UserController.getAllUsers);
-router.get('/:id', UserController.getUserById);
-router.post(
-  '/',
-  checkPermission('user:create'),
-  validateRequest(createUserSchema),
-  UserController.createUser
-);
-router.put('/:id', validateRequest(updateUserSchema), UserController.updateUser);
-router.delete('/:id', UserController.deleteUser);
+const router = createBaseRoutes(new UserController(), middlewares);
 
 export default router;

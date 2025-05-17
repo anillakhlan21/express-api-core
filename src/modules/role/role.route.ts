@@ -1,14 +1,13 @@
-import express from 'express';
 import validateRequest from '../../middlewares/validate.middleware.js';
 import { createRoleSchema, updateRoleSchema } from './role.schema.js';
 import RoleController from './role.controller.js';
+import { createBaseRoutes, MiddlewareMap } from '../common/base.route.js';
 
-const router = express.Router();
+const middlewares: MiddlewareMap = {
+  create: [validateRequest(createRoleSchema)],
+  updateById: [validateRequest(updateRoleSchema)],
+};
 
-router.post('/', validateRequest(createRoleSchema), RoleController.createRole);
-router.get('/', RoleController.getAllRoles);
-router.get('/:id', RoleController.getRoleById);
-router.patch('/:id', validateRequest(updateRoleSchema), RoleController.updateRole);
-router.delete('/:id', RoleController.deleteRole);
+const router = createBaseRoutes(new RoleController(), middlewares);
 
 export default router;
